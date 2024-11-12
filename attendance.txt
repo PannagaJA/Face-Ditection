@@ -1,5 +1,12 @@
-Attendance Record:
-Name		USN		Time
+Attendance Record
 ========================================
-ritesh	79	2024-11-12 19:48:22
-pannaga	64	2024-11-12 19:48:22
+Present Students:
+Raghuveer (CI077) - 2024-11-13 00:13:33
+Shashank (CI094) - 2024-11-13 00:13:33
+
+Absent Students:
+Poornima (Is099)
+Ritesh (CI079)
+Ruthu (CI097)
+Sanath (CI088)
+Pannaga (CI064)

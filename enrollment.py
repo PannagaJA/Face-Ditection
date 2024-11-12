@@ -69,7 +69,12 @@ def enroll_student_from_image(image_path, name, usn):
         print(f"Error saving student data: {e}")
 
 # Example of how to use the function
-image_path = input("Enter the path to the student's photo (e.g., 'student_photo.jpg'): ")
-name = input("Enter the student's name: ")
-usn = input("Enter the student's USN: ")
-enroll_student_from_image(image_path, name, usn)
+def enroll_students():
+    num_students = int(input("How many students to enroll? "))
+    for _ in range(num_students):
+        image_path = input("Enter the path to the student's photo (e.g., 'student_photo.jpg'): ")
+        name = input("Enter the student's name: ")
+        usn = input("Enter the student's USN: ")
+        enroll_student_from_image(image_path, name, usn)
+
+enroll_students()

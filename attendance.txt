@@ -1,8 +1,8 @@
 Attendance Record
 ========================================
 Present Students:
-Raghuveer (CI077) - 2024-11-13 00:13:33
-Shashank (CI094) - 2024-11-13 00:13:33
+Raghuveer (CI077) - 2024-11-13 00:51:35
+Shashank (CI094) - 2024-11-13 00:51:35
 
 Absent Students:
 Poornima (Is099)
@@ -10,3 +10,4 @@ Ritesh (CI079)
 Ruthu (CI097)
 Sanath (CI088)
 Pannaga (CI064)
+Praveen (CI074)

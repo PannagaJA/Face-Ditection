@@ -1,6 +1,7 @@
 import face_recognition
 import pickle
 from datetime import datetime
+import pandas as pd
 
 def detect_attendance(image_path, threshold=0.6):  # Default threshold to 0.6
     # Load stored student data (encodings, names, and USNs)
@@ -54,18 +55,22 @@ def detect_attendance(image_path, threshold=0.6):  # Default threshold to 0.6
     detected_names = [entry['Name'] for entry in present_list]
     absent_list = [student for student in student_data if student['name'] not in detected_names]
 
-    # Saving the attendance data to a text file
+    # Convert attendance data to DataFrames
+    present_df = pd.DataFrame(present_list)
+    absent_df = pd.DataFrame(absent_list, columns=['name', 'usn'])
+
+    # Create a dictionary to hold dataframes for multi-sheet Excel
+    dataframes = {
+        "Present Students": present_df,
+        "Absent Students": absent_df
+    }
+
+    # Save attendance data to an Excel file with multiple sheets
     try:
-        with open('attendance.txt', 'w') as file:
-            file.write("Attendance Record\n")
-            file.write("="*40 + "\n")
-            file.write("Present Students:\n")
-            for entry in present_list:
-                file.write(f"{entry['Name']} ({entry['USN']}) - {entry['Time']}\n")
-            file.write("\nAbsent Students:\n")
-            for student in absent_list:
-                file.write(f"{student['name']} ({student['usn']})\n")
-        print("Attendance has been saved successfully to 'attendance.txt'.")
+        with pd.ExcelWriter('attendance.xlsx', engine='openpyxl') as writer:
+            for sheet_name, df in dataframes.items():
+                df.to_excel(writer, sheet_name=sheet_name, index=False)
+        print("Attendance has been saved successfully to 'attendance.xlsx'.")
     except Exception as e:
         print(f"Error saving attendance data: {e}")
 
